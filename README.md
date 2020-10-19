@@ -1,30 +1,49 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Pokedex App V2
 
-## Getting Started
+## Description
 
-First, run the development server:
+This app stores all pokemon and comes with complex searching & filtering capability. This is also a version 2 of my [Pokedex App](https://github.com/yewyewXD/Pokemon-App)
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+## Build status
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+**Not in production**
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+Started on: 19 Oct 2020 <br>
 
-## Learn More
+## Screenshots
 
-To learn more about Next.js, take a look at the following resources:
+Will be added soon
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Tech/framework used
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+- NextJS
+- Sass
+- Material UI
+- GraphQL
+- PWA
+- Jest
+- React Native
 
-## Deploy on Vercel
+## Features
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/import?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Will be added soon
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## How to use it locally
+
+Will be added soon
+
+## Future Update
+
+- Voice recognition
+- Custom pagination
+- Search feature
+- Advanced filter
+- Pokemon Trading Card targeting on Ebay
+- Available offline
+- A complete README
+
+## Credits
+
+#### Project Inspiration:
+
+[Video by James Q Quick](https://www.youtube.com/watch?v=LMRAEUPkFXI&t=1523s&ab_channel=JamesQQuick)
