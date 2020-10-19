@@ -22,6 +22,7 @@ Will be added soon
 - GraphQL
 - PWA
 - Jest
+- Enzyme
 - React Native
 
 ## Features
