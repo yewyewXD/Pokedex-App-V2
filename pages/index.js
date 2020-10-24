@@ -19,6 +19,7 @@ import {
 
 // fonts
 import "fontsource-roboto";
+import SearchBar from "../components/SearchBar";
 
 // const useStyles = makeStyles({
 //   root: {
@@ -45,39 +46,6 @@ import "fontsource-roboto";
 export default function Home({ allPokemonDetail }) {
   console.log(allPokemonDetail);
 
-  function receiveSpeech() {
-    const content = document.querySelector(".content");
-
-    const SpeechRecognition =
-      window.SpeechRecognition || window.webkitSpeechRecognition;
-    const recognition = new SpeechRecognition();
-
-    recognition.onstart = function () {
-      console.log("voice is activated!");
-    };
-
-    recognition.onresult = function (e) {
-      const current = e.resultIndex;
-
-      const transcript = e.results[current][0].transcript;
-      content.textContent = transcript;
-
-      readOutLoud(transcript);
-    };
-
-    recognition.start();
-
-    function readOutLoud(message) {
-      const speech = new SpeechSynthesisUtterance();
-      speech.text = message;
-      speech.volume = 1;
-      speech.rate = 1;
-      speech.pitch = 1;
-
-      window.speechSynthesis.speak(speech);
-    }
-  }
-
   return (
     <div>
       <Head>
@@ -85,9 +53,7 @@ export default function Home({ allPokemonDetail }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <button onClick={receiveSpeech}>speak</button>
-
-      <h5 className="content"></h5>
+      <SearchBar />
     </div>
   );
 }
