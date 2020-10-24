@@ -42,8 +42,8 @@ import "fontsource-roboto";
 //   palette: {},
 // });
 
-export default function Home({ allPokemon }) {
-  console.log(allPokemon);
+export default function Home({ allPokemonDetail }) {
+  console.log(allPokemonDetail);
 
   function receiveSpeech() {
     const content = document.querySelector(".content");
@@ -94,16 +94,21 @@ export default function Home({ allPokemon }) {
 
 export async function getStaticProps(context) {
   try {
-    const res = await fetch(
-      "https://pokeapi.co/api/v2/pokemon?limit=10000&offset=0"
+    const allPokemonRes = await axios.get(
+      "https://pokeapi.co/api/v2/pokemon?limit=2&offset=0"
     );
-    const { results } = await res.json();
-    const allPokemon = results.map((eachPokemon, index) => {
-      const image = `https://pokeres.bastionbot.org/images/pokemon/${index}.png`;
-      return { ...eachPokemon, image };
-    });
+
+    const allPokemon = allPokemonRes.data.results;
+
+    let allPokemonDetail = [];
+    for (const pokemon of allPokemon) {
+      const pokemonDetailRes = await axios.get(pokemon.url);
+      const pokemonDetail = pokemonDetailRes.data;
+      allPokemonDetail.push(pokemonDetail);
+    }
+
     return {
-      props: { allPokemon },
+      props: { allPokemonDetail },
     };
   } catch (err) {
     console.error(err);
