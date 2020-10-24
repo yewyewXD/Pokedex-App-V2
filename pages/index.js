@@ -101,11 +101,22 @@ export async function getStaticProps(context) {
     const allPokemon = allPokemonRes.data.results;
 
     let allPokemonDetail = [];
-    for (const pokemon of allPokemon) {
-      const pokemonDetailRes = await axios.get(pokemon.url);
-      const pokemonDetail = pokemonDetailRes.data;
-      allPokemonDetail.push(pokemonDetail);
-    }
+    // for (const pokemon of allPokemon) {
+    //   const pokemonDetailRes = await axios.get(pokemon.url);
+    //   const pokemonDetail = pokemonDetailRes.data;
+    //   allPokemonDetail.push(pokemonDetail);
+    // }
+    await Promise.all(
+      allPokemon.map(async (pokemon, index) => {
+        const pokemonDetailRes = await axios.get(pokemon.url);
+        const pokemonDetail = pokemonDetailRes.data;
+        const pokemonImage = `https://pokeres.bastionbot.org/images/pokemon/${
+          +index + 1
+        }.png`;
+        const newPokemonDetail = { ...pokemonDetail, image: pokemonImage };
+        allPokemonDetail.push(newPokemonDetail);
+      })
+    );
 
     return {
       props: { allPokemonDetail },
