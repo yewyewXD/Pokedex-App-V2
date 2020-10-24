@@ -20,6 +20,7 @@ import {
 // fonts
 import "fontsource-roboto";
 import SearchBar from "../components/SearchBar";
+import Layout from "../components/Layout";
 
 // const useStyles = makeStyles({
 //   root: {
@@ -47,14 +48,9 @@ export default function Home({ allPokemonDetail }) {
   console.log(allPokemonDetail);
 
   return (
-    <div>
-      <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
+    <Layout title={"Pokemon V2"} description={"We are back to catch them all"}>
       <SearchBar />
-    </div>
+    </Layout>
   );
 }
 
