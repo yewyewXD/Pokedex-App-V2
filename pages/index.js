@@ -36,7 +36,7 @@ export default function Home({ allPokemonDetail }) {
       <SearchBar />
 
       {/* all pokemon cards */}
-      <Grid container spacing={1} justify={"center"} align={"center"}>
+      <Grid container spacing={2} justify={"center"} alignItems={"center"}>
         {allPokemonDetail.map((pokemon) => (
           <Grid
             item
