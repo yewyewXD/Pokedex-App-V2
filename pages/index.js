@@ -4,11 +4,8 @@ import {
   //styles
   ThemeProvider,
   createMuiTheme,
-  makeStyles,
-  colors,
   Typography,
   //components
-  AppBar,
   Toolbar,
   IconButton,
   Paper,
@@ -21,19 +18,7 @@ import {
 import "fontsource-roboto";
 import SearchBar from "../components/SearchBar";
 import Layout from "../components/Layout";
-
-// const useStyles = makeStyles({
-//   root: {
-//     background: "lightgrey",
-//     border: "5px solid grey",
-//     borderRadius: 0,
-//     color: "white",
-//     padding: "0 30px",
-//   },
-//   appBar: {
-//     marginTop: "5rem",
-//   },
-// });
+import OverviewCard from "../components/pokemon/OverviewCard";
 
 // const theme = createMuiTheme({
 //   typography: {
@@ -46,10 +31,20 @@ import Layout from "../components/Layout";
 
 export default function Home({ allPokemonDetail }) {
   console.log(allPokemonDetail);
-
   return (
     <Layout title={"Pokemon V2"} description={"We are back to catch them all"}>
       <SearchBar />
+
+      {/* all pokemon cards */}
+      {allPokemonDetail.map((pokemon) => (
+        <OverviewCard
+          key={pokemon.id}
+          id={pokemon.id}
+          name={pokemon.name}
+          types={pokemon.types.map((type) => type.name)}
+          image={pokemon.image}
+        />
+      ))}
     </Layout>
   );
 }
@@ -63,11 +58,7 @@ export async function getStaticProps(context) {
     const allPokemon = allPokemonRes.data.results;
 
     let allPokemonDetail = [];
-    // for (const pokemon of allPokemon) {
-    //   const pokemonDetailRes = await axios.get(pokemon.url);
-    //   const pokemonDetail = pokemonDetailRes.data;
-    //   allPokemonDetail.push(pokemonDetail);
-    // }
+
     await Promise.all(
       allPokemon.map(async (pokemon, index) => {
         const pokemonDetailRes = await axios.get(pokemon.url);
@@ -76,9 +67,11 @@ export async function getStaticProps(context) {
           +index + 1
         }.png`;
         const newPokemonDetail = { ...pokemonDetail, image: pokemonImage };
-        allPokemonDetail.push(newPokemonDetail);
+        allPokemonDetail.unshift(newPokemonDetail);
       })
     );
+
+    console.log("[index.js] get all pokemon");
 
     return {
       props: { allPokemonDetail },
