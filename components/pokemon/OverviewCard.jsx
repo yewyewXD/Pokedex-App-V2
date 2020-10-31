@@ -1,4 +1,30 @@
+import { makeStyles, Grid } from "@material-ui/core";
 export default function OverviewCard({ id, name, types, image }) {
+  const useStyles = makeStyles({
+    root: {
+      width: "400px",
+      padding: "30px 20px",
+      borderRadius: "20px 5px",
+    },
+    title: {
+      fontSize: "1.8rem",
+    },
+    label: {
+      width: "100px",
+      backgroundColor: "rgba(255, 255, 255, 0.5)",
+      padding: "3px",
+      margin: "5px 0",
+      borderRadius: "20px",
+    },
+    image: {
+      position: "absolute",
+      height: "100px",
+      width: "100px",
+      marginTop: "10px",
+      marginLeft: "-20px",
+    },
+  });
+
   const typeColor = () => {
     switch (types[0]) {
       case "normal":
@@ -40,17 +66,32 @@ export default function OverviewCard({ id, name, types, image }) {
     }
   };
 
+  const card = useStyles();
+
   return (
-    <div key={id} className="pokemon-card" style={{ background: typeColor() }}>
-      <img src={image} alt="" height="100" width="100" />
+    <div key={id} className={card.root} style={{ background: typeColor() }}>
+      <Grid container>
+        <Grid
+          item
+          container
+          xs={8}
+          alignItems={"flex-start"}
+          justify={"center"}
+          direction="column"
+        >
+          <div className={card.title}>{name}</div>
 
-      <div className="name">Name: {name}</div>
+          {types.map((type, index) => (
+            <div key={index} className={card.label}>
+              {type}
+            </div>
+          ))}
+        </Grid>
 
-      {types.map((type, index) => (
-        <div key={index}>
-          Type {index + 1}: {type}
-        </div>
-      ))}
+        <Grid item container xs={4} justify={"center"} alignItems={"flex-end"}>
+          <img src={image} alt={name} className={card.image} />
+        </Grid>
+      </Grid>
     </div>
   );
 }
