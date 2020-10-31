@@ -36,15 +36,16 @@ export default function Home({ allPokemonDetail }) {
       <SearchBar />
 
       {/* all pokemon cards */}
-      <Grid container spacing={2} justify={"center"} alignItems={"center"}>
+      <Grid container spacing={3} justify={"center"} alignItems={"center"}>
         {allPokemonDetail.map((pokemon) => (
           <Grid
             item
             container
-            lg={2}
-            md={3}
-            sm={4}
-            xs={6}
+            xl={2}
+            lg={3}
+            md={4}
+            sm={6}
+            xs={12}
             justify={"center"}
             align={"center"}
             key={pokemon.id}
@@ -65,7 +66,7 @@ export default function Home({ allPokemonDetail }) {
 export async function getStaticProps(context) {
   try {
     const allPokemonRes = await axios.get(
-      "https://pokeapi.co/api/v2/pokemon?limit=2&offset=0"
+      "https://pokeapi.co/api/v2/pokemon?limit=20&offset=0"
     );
 
     const allPokemon = allPokemonRes.data.results;

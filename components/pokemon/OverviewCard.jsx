@@ -2,7 +2,10 @@ import { makeStyles, Grid } from "@material-ui/core";
 export default function OverviewCard({ id, name, types, image }) {
   const useStyles = makeStyles({
     root: {
+      display: "flex",
+      alignItems: "center",
       width: "400px",
+      minHeight: "180px",
       padding: "30px 20px",
       borderRadius: "20px 5px",
     },
@@ -20,8 +23,7 @@ export default function OverviewCard({ id, name, types, image }) {
       position: "absolute",
       height: "100px",
       width: "100px",
-      marginTop: "10px",
-      marginLeft: "-20px",
+      marginLeft: "-15px",
     },
   });
 
@@ -31,6 +33,8 @@ export default function OverviewCard({ id, name, types, image }) {
         return "#A8A77A";
       case "fire":
         return "#EE8130";
+      case "water":
+        return "#6390F0";
       case "electric ":
         return "#F7D02C";
       case "grass":
@@ -70,13 +74,13 @@ export default function OverviewCard({ id, name, types, image }) {
 
   return (
     <div key={id} className={card.root} style={{ background: typeColor() }}>
-      <Grid container>
+      <Grid container style={{ height: "100%" }}>
         <Grid
           item
           container
           xs={8}
           alignItems={"flex-start"}
-          justify={"center"}
+          justify={"flex-start"}
           direction="column"
         >
           <div className={card.title}>{name}</div>
