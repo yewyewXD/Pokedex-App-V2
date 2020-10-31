@@ -1,6 +1,14 @@
-import { makeStyles, Grid } from "@material-ui/core";
-export default function OverviewCard({ id, name, types, image }) {
-  const useStyles = makeStyles({
+import {
+  makeStyles,
+  createStyles,
+  withStyles,
+  useTheme,
+  useMediaQuery,
+  Grid,
+} from "@material-ui/core";
+
+const useStyles = makeStyles((theme) =>
+  createStyles({
     root: {
       display: "flex",
       alignItems: "center",
@@ -8,6 +16,20 @@ export default function OverviewCard({ id, name, types, image }) {
       minHeight: "180px",
       padding: "30px 20px",
       borderRadius: "20px 5px",
+    },
+    rootLg: {
+      display: "flex",
+      alignItems: "center",
+      width: "400px",
+      minHeight: "180px",
+      padding: "30px 20px",
+      borderRadius: "20px 5px",
+      transition: "0.2s",
+      cursor: "pointer",
+      "&:hover": {
+        transform: "scale(1.1)",
+        boxShadow: "grey 5px 5px 5px",
+      },
     },
     title: {
       fontSize: "1.8rem",
@@ -25,7 +47,11 @@ export default function OverviewCard({ id, name, types, image }) {
       width: "100px",
       marginLeft: "-15px",
     },
-  });
+  })
+);
+
+function OverviewCard({ id, name, types, image }) {
+  const mdBreakPoint = useMediaQuery(useTheme().breakpoints.down("md"));
 
   const typeColor = () => {
     switch (types[0]) {
@@ -77,7 +103,11 @@ export default function OverviewCard({ id, name, types, image }) {
   const card = useStyles();
 
   return (
-    <div key={id} className={card.root} style={{ background: typeColor() }}>
+    <div
+      key={id}
+      className={mdBreakPoint ? card.root : card.rootLg}
+      style={{ background: typeColor() }}
+    >
       <Grid container style={{ height: "100%" }}>
         <Grid
           item
@@ -103,3 +133,5 @@ export default function OverviewCard({ id, name, types, image }) {
     </div>
   );
 }
+
+export default withStyles(useStyles)(OverviewCard);
