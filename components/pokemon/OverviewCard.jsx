@@ -70,6 +70,10 @@ export default function OverviewCard({ id, name, types, image }) {
     }
   };
 
+  function textCapitalize(text) {
+    return text.charAt(0).toUpperCase() + text.slice(1);
+  }
+
   const card = useStyles();
 
   return (
@@ -83,11 +87,11 @@ export default function OverviewCard({ id, name, types, image }) {
           justify={"flex-start"}
           direction="column"
         >
-          <div className={card.title}>{name}</div>
+          <div className={card.title}>{textCapitalize(name)}</div>
 
           {types.map((type, index) => (
             <div key={index} className={card.label}>
-              {type}
+              {textCapitalize(type)}
             </div>
           ))}
         </Grid>
