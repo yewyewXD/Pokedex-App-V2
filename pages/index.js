@@ -36,15 +36,28 @@ export default function Home({ allPokemonDetail }) {
       <SearchBar />
 
       {/* all pokemon cards */}
-      {allPokemonDetail.map((pokemon) => (
-        <OverviewCard
-          key={pokemon.id}
-          id={pokemon.id}
-          name={pokemon.name}
-          types={pokemon.types.map((type) => type.name)}
-          image={pokemon.image}
-        />
-      ))}
+      <Grid container spacing={1} justify={"center"} align={"center"}>
+        {allPokemonDetail.map((pokemon) => (
+          <Grid
+            item
+            container
+            lg={2}
+            md={3}
+            sm={4}
+            xs={6}
+            justify={"center"}
+            align={"center"}
+            key={pokemon.id}
+          >
+            <OverviewCard
+              id={pokemon.id}
+              name={pokemon.name}
+              types={pokemon.types.map((type) => type.type.name)}
+              image={pokemon.image}
+            />
+          </Grid>
+        ))}
+      </Grid>
     </Layout>
   );
 }
