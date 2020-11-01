@@ -13,7 +13,7 @@ import {
 } from "@material-ui/core";
 import DetailedCard from "./DetailedCard";
 
-const cardStyles = makeStyles((theme) =>
+const cardStyles = makeStyles(
   createStyles({
     root: {
       display: "flex",
@@ -158,6 +158,7 @@ function OverviewCard({ id, name, types, image, pokemonDetail }) {
         handleCloseModal={handleCloseModal}
         modalIsOpen={modalIsOpen}
         pokemon={pokemonDetail}
+        typeColor={typeColor()}
       />
     </>
   );
