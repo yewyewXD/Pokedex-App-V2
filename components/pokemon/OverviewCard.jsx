@@ -9,6 +9,7 @@ import {
   Grid,
 } from "@material-ui/core";
 import DetailedCard from "./DetailedCard";
+import axios from "axios";
 
 const cardStyles = makeStyles(
   createStyles({
@@ -56,8 +57,25 @@ const cardStyles = makeStyles(
 
 function OverviewCard({ id, name, types, image, pokemonDetail }) {
   const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [speciesDetail, setSpeciesDetail] = useState(null);
   const mdBreakPoint = useMediaQuery(useTheme().breakpoints.down("md"));
+
+  async function getPokemonSpeciesDetail(id) {
+    const res = await axios.get(
+      `https://pokeapi.co/api/v2/pokemon-species/${id}/`
+    );
+    const data = res.data;
+    const newSpeciesDetail = {
+      eggGroups: data.egg_groups[0].name,
+      description: data.flavor_text_entries[0].flavor_text,
+      growthRate: data.growth_rate.name,
+    };
+    setSpeciesDetail(newSpeciesDetail);
+    console.log("got new detail");
+  }
+
   const handleOpenModal = () => {
+    getPokemonSpeciesDetail(id);
     setModalIsOpen(true);
   };
 
@@ -157,6 +175,7 @@ function OverviewCard({ id, name, types, image, pokemonDetail }) {
         modalIsOpen={modalIsOpen}
         pokemon={pokemonDetail}
         typeColor={typeColor()}
+        speciesDetail={speciesDetail}
       />
     </>
   );

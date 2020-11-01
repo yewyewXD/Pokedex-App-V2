@@ -94,6 +94,7 @@ export default function DetailedCard({
   modalIsOpen,
   pokemon,
   typeColor,
+  speciesDetail,
 }) {
   const modal = modalStyles();
   const modalDetail = modalDetailStyles();
@@ -105,6 +106,10 @@ export default function DetailedCard({
 
   if (modalIsOpen) {
     console.log(pokemon);
+  }
+
+  if (speciesDetail) {
+    console.log(speciesDetail);
   }
 
   return (
@@ -124,7 +129,7 @@ export default function DetailedCard({
         <div className={modal.content} style={{ background: typeColor }}>
           <div className={modal.navbar}>
             <span onClick={handleCloseModal} style={{ cursor: "pointer" }}>
-              <KeyboardBackspaceIcon fontSize="1.5rem" />
+              <KeyboardBackspaceIcon fontSize="large" />
             </span>
 
             <div className={modalHeadline.root}>
