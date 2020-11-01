@@ -1,3 +1,5 @@
+import React, { useState } from "react";
+
 import {
   makeStyles,
   createStyles,
@@ -5,7 +7,11 @@ import {
   useTheme,
   useMediaQuery,
   Grid,
+  Fade,
+  Backdrop,
+  Modal,
 } from "@material-ui/core";
+import DetailedCard from "./DetailedCard";
 
 const useStyles = makeStyles((theme) =>
   createStyles({
@@ -50,8 +56,16 @@ const useStyles = makeStyles((theme) =>
   })
 );
 
-function OverviewCard({ id, name, types, image }) {
+function OverviewCard({ id, name, types, image, pokemonDetail }) {
+  const [modalIsOpen, setModalIsOpen] = useState(false);
   const mdBreakPoint = useMediaQuery(useTheme().breakpoints.down("md"));
+  const handleOpenModal = () => {
+    setModalIsOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setModalIsOpen(false);
+  };
 
   const typeColor = () => {
     switch (types[0]) {
@@ -100,37 +114,52 @@ function OverviewCard({ id, name, types, image }) {
     return text.charAt(0).toUpperCase() + text.slice(1);
   }
 
-  const card = useStyles();
+  const cardStyles = useStyles();
 
   return (
-    <div
-      key={id}
-      className={mdBreakPoint ? card.root : card.rootLg}
-      style={{ background: typeColor() }}
-    >
-      <Grid container style={{ height: "100%" }}>
-        <Grid
-          item
-          container
-          xs={8}
-          alignItems={"flex-start"}
-          justify={"flex-start"}
-          direction="column"
-        >
-          <div className={card.title}>{textCapitalize(name)}</div>
+    <>
+      <div
+        key={id}
+        className={mdBreakPoint ? cardStyles.root : cardStyles.rootLg}
+        style={{ background: typeColor() }}
+        onClick={handleOpenModal}
+      >
+        <Grid container style={{ height: "100%" }}>
+          <Grid
+            item
+            container
+            xs={8}
+            alignItems={"flex-start"}
+            justify={"flex-start"}
+            direction="column"
+          >
+            <div className={cardStyles.title}>{textCapitalize(name)}</div>
 
-          {types.map((type, index) => (
-            <div key={index} className={card.label}>
-              {textCapitalize(type)}
-            </div>
-          ))}
-        </Grid>
+            {types.map((type, index) => (
+              <div key={index} className={cardStyles.label}>
+                {textCapitalize(type)}
+              </div>
+            ))}
+          </Grid>
 
-        <Grid item container xs={4} justify={"center"} alignItems={"flex-end"}>
-          <img src={image} alt={name} className={card.image} />
+          <Grid
+            item
+            container
+            xs={4}
+            justify={"center"}
+            alignItems={"flex-end"}
+          >
+            <img src={image} alt={name} className={cardStyles.image} />
+          </Grid>
         </Grid>
-      </Grid>
-    </div>
+      </div>
+
+      <DetailedCard
+        handleCloseModal={handleCloseModal}
+        modalIsOpen={modalIsOpen}
+        pokemonDetail={pokemonDetail}
+      />
+    </>
   );
 }
 

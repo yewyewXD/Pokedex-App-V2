@@ -51,6 +51,7 @@ export default function Home({ allPokemonDetail }) {
             key={pokemon.id}
           >
             <OverviewCard
+              pokemonDetail={pokemon}
               id={pokemon.id}
               name={pokemon.name}
               types={pokemon.types.map((type) => type.type.name)}
