@@ -2,7 +2,7 @@ import { createStyles, makeStyles } from "@material-ui/core/styles";
 import Modal from "@material-ui/core/Modal";
 import Backdrop from "@material-ui/core/Backdrop";
 import Fade from "@material-ui/core/Fade";
-import { BsArrowLeft } from "react-icons/bs";
+import KeyboardBackspaceIcon from "@material-ui/icons/KeyboardBackspace";
 
 const modalStyles = makeStyles(
   createStyles({
@@ -95,7 +95,6 @@ export default function DetailedCard({
   pokemon,
   typeColor,
 }) {
-  console.log(typeColor);
   const modal = modalStyles();
   const modalDetail = modalDetailStyles();
   const modalHeadline = modalHeadlineStyles();
@@ -125,7 +124,7 @@ export default function DetailedCard({
         <div className={modal.content} style={{ background: typeColor }}>
           <div className={modal.navbar}>
             <span onClick={handleCloseModal} style={{ cursor: "pointer" }}>
-              <BsArrowLeft fontSize="1.5rem" />
+              <KeyboardBackspaceIcon fontSize="1.5rem" />
             </span>
 
             <div className={modalHeadline.root}>

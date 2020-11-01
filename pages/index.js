@@ -7,8 +7,6 @@ import {
   Typography,
   //components
   Toolbar,
-  IconButton,
-  Paper,
   Grid,
 } from "@material-ui/core";
 

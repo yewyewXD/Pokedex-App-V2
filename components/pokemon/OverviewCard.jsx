@@ -7,9 +7,6 @@ import {
   useTheme,
   useMediaQuery,
   Grid,
-  Fade,
-  Backdrop,
-  Modal,
 } from "@material-ui/core";
 import DetailedCard from "./DetailedCard";
 

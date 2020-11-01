@@ -16,8 +16,7 @@
     "fontsource-roboto": "^3.0.3",
     "next": "^10.0.0",
     "react": "16.14.0",
-    "react-dom": "16.14.0",
-    "react-icons": "^3.11.0"
+    "react-dom": "16.14.0"
   },
   "devDependencies": {
     "babel-core": "^6.26.3",
