@@ -30,7 +30,6 @@ import OverviewCard from "../components/pokemon/OverviewCard";
 // });
 
 export default function Home({ allPokemonDetail }) {
-  console.log(allPokemonDetail);
   return (
     <Layout title={"Pokemon V2"} description={"We are back to catch them all"}>
       <SearchBar />

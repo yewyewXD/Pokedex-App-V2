@@ -13,7 +13,7 @@ import {
 } from "@material-ui/core";
 import DetailedCard from "./DetailedCard";
 
-const useStyles = makeStyles((theme) =>
+const cardStyles = makeStyles((theme) =>
   createStyles({
     root: {
       display: "flex",
@@ -114,13 +114,13 @@ function OverviewCard({ id, name, types, image, pokemonDetail }) {
     return text.charAt(0).toUpperCase() + text.slice(1);
   }
 
-  const cardStyles = useStyles();
+  const card = cardStyles();
 
   return (
     <>
       <div
         key={id}
-        className={mdBreakPoint ? cardStyles.root : cardStyles.rootLg}
+        className={mdBreakPoint ? card.root : card.rootLg}
         style={{ background: typeColor() }}
         onClick={handleOpenModal}
       >
@@ -133,10 +133,10 @@ function OverviewCard({ id, name, types, image, pokemonDetail }) {
             justify={"flex-start"}
             direction="column"
           >
-            <div className={cardStyles.title}>{textCapitalize(name)}</div>
+            <div className={card.title}>{textCapitalize(name)}</div>
 
             {types.map((type, index) => (
-              <div key={index} className={cardStyles.label}>
+              <div key={index} className={card.label}>
                 {textCapitalize(type)}
               </div>
             ))}
@@ -149,7 +149,7 @@ function OverviewCard({ id, name, types, image, pokemonDetail }) {
             justify={"center"}
             alignItems={"flex-end"}
           >
-            <img src={image} alt={name} className={cardStyles.image} />
+            <img src={image} alt={name} className={card.image} />
           </Grid>
         </Grid>
       </div>
@@ -157,10 +157,10 @@ function OverviewCard({ id, name, types, image, pokemonDetail }) {
       <DetailedCard
         handleCloseModal={handleCloseModal}
         modalIsOpen={modalIsOpen}
-        pokemonDetail={pokemonDetail}
+        pokemon={pokemonDetail}
       />
     </>
   );
 }
 
-export default withStyles(useStyles)(OverviewCard);
+export default withStyles(cardStyles)(OverviewCard);
