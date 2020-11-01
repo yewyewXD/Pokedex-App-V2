@@ -36,6 +36,7 @@ const cardStyles = makeStyles(
     },
     title: {
       fontSize: "1.8rem",
+      color: "white",
     },
     label: {
       width: "100px",
@@ -72,7 +73,7 @@ function OverviewCard({ id, name, types, image, pokemonDetail }) {
         return "#EE8130";
       case "water":
         return "#6390F0";
-      case "electric ":
+      case "electric":
         return "#F7D02C";
       case "grass":
         return "#7AC74C";

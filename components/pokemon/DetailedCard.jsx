@@ -157,7 +157,7 @@ export default function DetailedCard({
 
             <div className={modalDetail.container}>
               <span className={modalDetail.title}>Height:</span>
-              {+pokemon.height / 10} cm
+              {+pokemon.height / 10} m
             </div>
 
             <div className="stats">
