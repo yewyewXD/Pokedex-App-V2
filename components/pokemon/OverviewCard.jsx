@@ -20,6 +20,7 @@ const cardStyles = makeStyles(
       minHeight: "180px",
       padding: "30px 20px",
       borderRadius: "20px 5px",
+      boxShadow: "grey 2px 2px 5px",
     },
     rootLg: {
       display: "flex",

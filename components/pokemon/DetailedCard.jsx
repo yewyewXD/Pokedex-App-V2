@@ -3,6 +3,7 @@ import Modal from "@material-ui/core/Modal";
 import Backdrop from "@material-ui/core/Backdrop";
 import Fade from "@material-ui/core/Fade";
 import KeyboardBackspaceIcon from "@material-ui/icons/KeyboardBackspace";
+import DetailedTab from "./DetailedTab";
 
 const modalStyles = makeStyles(
   createStyles({
@@ -78,15 +79,6 @@ const modalDetailStyles = makeStyles({
     borderRadius: "20px",
     padding: "30px",
   },
-  container: {
-    padding: "10px 0",
-    fontWeight: "bold",
-  },
-  title: {
-    minWidth: "60px",
-    marginRight: "10px",
-    color: "grey",
-  },
 });
 
 export default function DetailedCard({
@@ -106,16 +98,13 @@ export default function DetailedCard({
 
   if (modalIsOpen) {
     console.log(pokemon);
-  }
-
-  if (speciesDetail) {
-    console.log(speciesDetail);
+    if (speciesDetail) {
+      console.log(speciesDetail);
+    }
   }
 
   return (
     <Modal
-      aria-labelledby="transition-modal-title"
-      aria-describedby="transition-modal-description"
       className={modal.root}
       open={modalIsOpen}
       closeAfterTransition
@@ -139,9 +128,16 @@ export default function DetailedCard({
               <span className={modalHeadline.subtitle}>#{pokemon.id}</span>
             </div>
 
-            <div className={modalHeadline.root}>
+            <div
+              className={modalHeadline.root}
+              style={{ justifyContent: "flex-start" }}
+            >
               {pokemon.types.map((type, index) => (
-                <span className={modalHeadline.label} key={index}>
+                <span
+                  className={modalHeadline.label}
+                  key={index}
+                  style={{ marginRight: "15px" }}
+                >
                   {textCapitalize(type.type.name)}
                 </span>
               ))}
@@ -155,26 +151,7 @@ export default function DetailedCard({
           </div>
 
           <div className={modalDetail.root}>
-            <div className={modalDetail.container}>
-              <span className={modalDetail.title}>Weight:</span>
-              {+pokemon.weight / 10} kg
-            </div>
-
-            <div className={modalDetail.container}>
-              <span className={modalDetail.title}>Height:</span>
-              {+pokemon.height / 10} m
-            </div>
-
-            <div className="stats">
-              {pokemon.stats.map((stat, index) => (
-                <div className={modalDetail.container} key={index}>
-                  <span className={modalDetail.title}>
-                    {textCapitalize(stat.stat.name)}:
-                  </span>
-                  {stat.base_stat}
-                </div>
-              ))}
-            </div>
+            <DetailedTab pokemon={pokemon} speciesDetail={speciesDetail} />
           </div>
         </div>
       </Fade>
