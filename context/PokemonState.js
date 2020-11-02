@@ -1,3 +1,4 @@
+import { createGenerateClassName } from "@material-ui/core";
 import React, { useReducer, createContext } from "react";
 import PokemonReducer from "./PokemonReducer";
 
@@ -28,10 +29,10 @@ export const PokemonProvider = ({ children }) => {
     });
   }
 
-  function filteringPokemon(variable) {
+  function filteringPokemon(filterState, variable) {
     switch (variable) {
       case "a-to-z":
-        return state.allPokemon.sort((a, b) => {
+        return filterState.sort((a, b) => {
           if (a.name < b.name) {
             return -1;
           }
@@ -42,7 +43,7 @@ export const PokemonProvider = ({ children }) => {
         });
 
       case "z-to-a":
-        return state.allPokemon.sort((a, b) => {
+        return filterState.sort((a, b) => {
           if (a.name < b.name) {
             return 1;
           }
@@ -53,7 +54,7 @@ export const PokemonProvider = ({ children }) => {
         });
 
       case "asc-id":
-        return state.allPokemon.sort((a, b) => {
+        return filterState.sort((a, b) => {
           if (a.id < b.id) {
             return -1;
           }
@@ -64,7 +65,7 @@ export const PokemonProvider = ({ children }) => {
         });
 
       case "desc-id":
-        return state.allPokemon.sort((a, b) => {
+        return filterState.sort((a, b) => {
           if (a.id < b.id) {
             return 1;
           }
@@ -75,13 +76,13 @@ export const PokemonProvider = ({ children }) => {
         });
 
       default:
-        return state.allPokemon;
+        return state.filterState;
     }
   }
 
   function filterPokemon(variable) {
-    updateAllPokemon(filteringPokemon(variable));
-    storeAllPokemon(filteringPokemon(variable));
+    updateAllPokemon(filteringPokemon(state.allPokemon, variable));
+    storeAllPokemon(filteringPokemon(state.constantAllPokemon, variable));
   }
 
   function searchPokemon(term) {
