@@ -1,8 +1,8 @@
 import React, { useReducer, createContext } from "react";
 import PokemonReducer from "./PokemonReducer";
-import axios from "axios";
 
 const initialState = {
+  constantAllPokemon: [],
   allPokemon: [],
   isLoading: false,
 };
@@ -11,6 +11,13 @@ export const PokemonContext = createContext(initialState);
 
 export const PokemonProvider = ({ children }) => {
   const [state, dispatch] = useReducer(PokemonReducer, initialState);
+
+  function storeAllPokemon(pokemon) {
+    dispatch({
+      type: "STORE_ALL_POKEMON",
+      payload: pokemon,
+    });
+  }
 
   function updateAllPokemon(pokemon) {
     console.log("[updateAllPokemon]:", pokemon);
@@ -75,13 +82,22 @@ export const PokemonProvider = ({ children }) => {
     updateAllPokemon(filteringPokemon(variable));
   }
 
+  function searchPokemon(term) {
+    updateAllPokemon(
+      state.allPokemon.filter((pokemon) => pokemon.name.indexOf(term) > -1)
+    );
+  }
+
   return (
     <PokemonContext.Provider
       value={{
+        constantAllPokemon: state.constantAllPokemon,
         allPokemon: state.allPokemon,
         isLoading: state.isLoading,
+        storeAllPokemon,
         updateAllPokemon,
         filterPokemon,
+        searchPokemon,
       }}
     >
       {children}

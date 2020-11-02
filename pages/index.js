@@ -26,10 +26,13 @@ import FilterBar from "../components/FilterBar";
 // });
 
 export default function Home({ allPokemonDetail }) {
-  const { allPokemon, updateAllPokemon } = useContext(PokemonContext);
+  const { allPokemon, updateAllPokemon, storeAllPokemon } = useContext(
+    PokemonContext
+  );
 
   useEffect(() => {
     updateAllPokemon(allPokemonDetail);
+    storeAllPokemon(allPokemonDetail);
   }, []);
 
   return (

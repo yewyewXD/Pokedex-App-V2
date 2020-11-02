@@ -1,4 +1,10 @@
+import { useState, useContext } from "react";
+import { PokemonContext } from "../context//PokemonState";
+
 export default function SearchBar() {
+  const { searchPokemon } = useContext(PokemonContext);
+  const [searchTerm, setSearchTerm] = useState("");
+
   function receiveSpeech() {
     const content = document.querySelector(".content");
 
@@ -32,9 +38,17 @@ export default function SearchBar() {
     }
   }
 
+  function handleSearchPokemon(e) {
+    const updatedSearchTerm = e.target.value;
+    console.log("current search term:", updatedSearchTerm);
+    setSearchTerm(updatedSearchTerm);
+    searchPokemon(updatedSearchTerm);
+  }
+
   return (
     <div>
       <button onClick={receiveSpeech}>speak</button>
+      <input type="text" value={searchTerm} onChange={handleSearchPokemon} />
 
       <h5 className="content"></h5>
     </div>
