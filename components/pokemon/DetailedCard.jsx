@@ -33,7 +33,7 @@ const modalStyles = makeStyles(
       display: "flex",
       justifyContent: "center",
       alignItems: "center",
-      height: "180px",
+      height: "220px",
     },
     image: {
       position: "relative",

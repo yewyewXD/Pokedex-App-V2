@@ -1,4 +1,4 @@
-export default (state, action) => {
+export default function PokemonReducer(state, action) {
   switch (action.type) {
     case "STORE_ALL_POKEMON":
       return {
@@ -9,4 +9,4 @@ export default (state, action) => {
     default:
       return state;
   }
-};
+}
