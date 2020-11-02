@@ -15,16 +15,32 @@ export default function FilterBar() {
 
   return (
     <div>
+      A to Z
       <Radio
         checked={selectedValue === "a-to-z"}
         onChange={handleChange}
         value="a-to-z"
         name="filter-button"
       />
+      Z to A
       <Radio
         checked={selectedValue === "z-to-a"}
         onChange={handleChange}
         value="z-to-a"
+        name="filter-button"
+      />
+      Ascending Id
+      <Radio
+        checked={selectedValue === "asc-id"}
+        onChange={handleChange}
+        value="asc-id"
+        name="filter-button"
+      />
+      Descending Id
+      <Radio
+        checked={selectedValue === "desc-id"}
+        onChange={handleChange}
+        value="desc-id"
         name="filter-button"
       />
     </div>
