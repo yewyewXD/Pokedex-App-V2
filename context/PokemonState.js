@@ -29,7 +29,7 @@ export const PokemonProvider = ({ children }) => {
     });
   }
 
-  function filteringPokemon(filterState, variable) {
+  function sortingPokemon(filterState, variable) {
     switch (variable) {
       case "a-to-z":
         return filterState.sort((a, b) => {
@@ -80,9 +80,9 @@ export const PokemonProvider = ({ children }) => {
     }
   }
 
-  function filterPokemon(variable) {
-    updateAllPokemon(filteringPokemon(state.allPokemon, variable));
-    storeAllPokemon(filteringPokemon(state.constantAllPokemon, variable));
+  function sortPokemon(variable) {
+    updateAllPokemon(sortingPokemon(state.allPokemon, variable));
+    storeAllPokemon(sortingPokemon(state.constantAllPokemon, variable));
   }
 
   function searchPokemon(term) {
@@ -105,7 +105,7 @@ export const PokemonProvider = ({ children }) => {
         isLoading: state.isLoading,
         storeAllPokemon,
         updateAllPokemon,
-        filterPokemon,
+        sortPokemon,
         searchPokemon,
       }}
     >

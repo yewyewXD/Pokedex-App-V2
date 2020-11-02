@@ -4,13 +4,13 @@ import { PokemonContext } from "../context/PokemonState";
 
 export default function FilterBar() {
   const [selectedValue, setSelectedValue] = useState(null);
-  const { filterPokemon } = useContext(PokemonContext);
+  const { sortPokemon } = useContext(PokemonContext);
 
   const handleChange = (e) => {
     const filterValue = e.target.value;
     setSelectedValue(filterValue);
     console.log("[FilterBar]:", filterValue);
-    filterPokemon(filterValue);
+    sortPokemon(filterValue);
   };
 
   return (
