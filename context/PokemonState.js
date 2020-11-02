@@ -6,7 +6,6 @@ const initialState = {
   constantAllPokemon: [],
   allPokemon: [],
   isLoading: false,
-  isSearching: false,
 };
 
 export const PokemonContext = createContext(initialState);
@@ -76,7 +75,7 @@ export const PokemonProvider = ({ children }) => {
         });
 
       default:
-        return state.filterState;
+        return filterState;
     }
   }
 
