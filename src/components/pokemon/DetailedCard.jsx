@@ -2,7 +2,7 @@ import {
   createStyles,
   makeStyles,
   Modal,
-  BackDrop,
+  Backdrop,
   Fade,
 } from "@material-ui/core";
 import KeyboardBackspaceIcon from "@material-ui/icons/KeyboardBackspace";

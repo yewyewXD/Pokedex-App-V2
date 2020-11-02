@@ -31,6 +31,7 @@ export default function App({ allPokemonDetail }) {
 
   async function getAllPokemon() {
     try {
+      let allPokemonDetail = [];
       const allPokemonRes = await axios.get(
         "https://pokeapi.co/api/v2/pokemon?limit=20&offset=0"
       );
@@ -50,6 +51,7 @@ export default function App({ allPokemonDetail }) {
       );
 
       storeAllPokemon(allPokemonDetail);
+      updateAllPokemon(allPokemonDetail);
     } catch (err) {
       console.error(err);
     }
@@ -57,10 +59,6 @@ export default function App({ allPokemonDetail }) {
 
   useEffect(() => {
     getAllPokemon();
-    if (allPokemonDetail) {
-      updateAllPokemon(allPokemonDetail);
-      storeAllPokemon(allPokemonDetail);
-    }
   }, []);
 
   return (
