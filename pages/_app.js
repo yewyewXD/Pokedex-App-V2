@@ -1,7 +1,12 @@
-import '../styles/globals.css'
+import "../styles/globals.css";
+import { PokemonProvider } from "../context/PokemonState";
 
 function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />
+  return (
+    <PokemonProvider>
+      <Component {...pageProps} />
+    </PokemonProvider>
+  );
 }
 
-export default MyApp
+export default MyApp;
