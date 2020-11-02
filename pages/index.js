@@ -1,4 +1,5 @@
-import Head from "next/head";
+import { useContext, useEffect } from "react";
+import { PokemonContext } from "../context/PokemonState";
 import axios from "axios";
 import {
   //styles
@@ -28,6 +29,12 @@ import OverviewCard from "../components/pokemon/OverviewCard";
 // });
 
 export default function Home({ allPokemonDetail }) {
+  const { storeAllPokemon } = useContext(PokemonContext);
+
+  useEffect(() => {
+    storeAllPokemon(allPokemonDetail);
+  }, [allPokemonDetail]);
+
   return (
     <Layout title={"Pokemon V2"} description={"We are back to catch them all"}>
       <SearchBar />
@@ -82,8 +89,6 @@ export async function getStaticProps(context) {
         allPokemonDetail.unshift(newPokemonDetail);
       })
     );
-
-    console.log("[index.js] get all pokemon");
 
     return {
       props: { allPokemonDetail },
