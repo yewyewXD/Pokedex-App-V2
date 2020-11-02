@@ -5,6 +5,7 @@ const initialState = {
   constantAllPokemon: [],
   allPokemon: [],
   isLoading: false,
+  isSearching: false,
 };
 
 export const PokemonContext = createContext(initialState);
@@ -80,14 +81,19 @@ export const PokemonProvider = ({ children }) => {
 
   function filterPokemon(variable) {
     updateAllPokemon(filteringPokemon(variable));
+    storeAllPokemon(filteringPokemon(variable));
   }
 
   function searchPokemon(term) {
-    updateAllPokemon(
-      state.constantAllPokemon.filter(
-        (pokemon) => pokemon.name.indexOf(term) > -1
-      )
-    );
+    if (!term) {
+      updateAllPokemon(state.constantAllPokemon);
+    } else {
+      updateAllPokemon(
+        state.constantAllPokemon.filter(
+          (pokemon) => pokemon.name.indexOf(term) > -1
+        )
+      );
+    }
   }
 
   return (
