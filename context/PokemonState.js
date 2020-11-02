@@ -84,7 +84,9 @@ export const PokemonProvider = ({ children }) => {
 
   function searchPokemon(term) {
     updateAllPokemon(
-      state.allPokemon.filter((pokemon) => pokemon.name.indexOf(term) > -1)
+      state.constantAllPokemon.filter(
+        (pokemon) => pokemon.name.indexOf(term) > -1
+      )
     );
   }
 
