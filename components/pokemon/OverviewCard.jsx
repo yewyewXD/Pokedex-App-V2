@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import {
   makeStyles,
   createStyles,
-  withStyles,
   useTheme,
   useMediaQuery,
   Grid,
@@ -182,4 +181,4 @@ function OverviewCard({ id, name, types, image, pokemonDetail }) {
   );
 }
 
-export default withStyles(cardStyles)(OverviewCard);
+export default OverviewCard;

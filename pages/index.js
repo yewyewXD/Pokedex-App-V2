@@ -10,14 +10,11 @@ import {
   Toolbar,
   Grid,
 } from "@material-ui/core";
-
-// icons
-
-// fonts
 import "fontsource-roboto";
 import SearchBar from "../components/SearchBar";
 import Layout from "../components/Layout";
 import OverviewCard from "../components/pokemon/OverviewCard";
+import FilterBar from "../components/FilterBar";
 
 // const theme = createMuiTheme({
 //   typography: {
@@ -29,41 +26,43 @@ import OverviewCard from "../components/pokemon/OverviewCard";
 // });
 
 export default function Home({ allPokemonDetail }) {
-  const { storeAllPokemon } = useContext(PokemonContext);
+  const { allPokemon, updateAllPokemon } = useContext(PokemonContext);
 
   useEffect(() => {
-    storeAllPokemon(allPokemonDetail);
-  }, [allPokemonDetail]);
+    updateAllPokemon(allPokemonDetail);
+  }, []);
 
   return (
     <Layout title={"Pokemon V2"} description={"We are back to catch them all"}>
       <SearchBar />
+      <FilterBar />
 
-      {/* all pokemon cards */}
-      <Grid container spacing={3} justify={"center"} alignItems={"center"}>
-        {allPokemonDetail.map((pokemon) => (
-          <Grid
-            item
-            container
-            xl={2}
-            lg={3}
-            md={4}
-            sm={6}
-            xs={12}
-            justify={"center"}
-            align={"center"}
-            key={pokemon.id}
-          >
-            <OverviewCard
-              pokemonDetail={pokemon}
-              id={pokemon.id}
-              name={pokemon.name}
-              types={pokemon.types.map((type) => type.type.name)}
-              image={pokemon.image}
-            />
-          </Grid>
-        ))}
-      </Grid>
+      {allPokemon && (
+        <Grid container spacing={3} justify={"center"} alignItems={"center"}>
+          {allPokemon.map((pokemon) => (
+            <Grid
+              item
+              container
+              xl={2}
+              lg={3}
+              md={4}
+              sm={6}
+              xs={12}
+              justify={"center"}
+              align={"center"}
+              key={pokemon.id}
+            >
+              <OverviewCard
+                pokemonDetail={pokemon}
+                id={pokemon.id}
+                name={pokemon.name}
+                types={pokemon.types.map((type) => type.type.name)}
+                image={pokemon.image}
+              />
+            </Grid>
+          ))}
+        </Grid>
+      )}
     </Layout>
   );
 }
