@@ -1,5 +1,4 @@
-import { createGenerateClassName } from "@material-ui/core";
-import React, { useReducer, createContext } from "react";
+import { useReducer, createContext } from "react";
 import PokemonReducer from "./PokemonReducer";
 
 const initialState = {
