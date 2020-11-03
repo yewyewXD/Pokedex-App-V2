@@ -66,7 +66,13 @@ export default function App() {
       <Navbar />
 
       <Grid container style={{ marginTop: "64px", padding: "36px 48px" }}>
-        <Grid container item justify={"center"} sm={2}>
+        <Grid
+          container
+          item
+          justify={"center"}
+          sm={2}
+          style={{ background: "grey" }}
+        >
           <SearchBar />
           <FilterBar />
         </Grid>
