@@ -4,6 +4,7 @@ import { PokemonContext } from "../context/PokemonState";
 import InputBase from "@material-ui/core/InputBase";
 import { fade, makeStyles } from "@material-ui/core/styles";
 import SearchIcon from "@material-ui/icons/Search";
+import MicIcon from "@material-ui/icons/Mic";
 
 const useStyles = makeStyles((theme) => ({
   search: {
@@ -83,11 +84,9 @@ export default function SearchBar() {
   }
 
   function handleSearchPokemon(term) {
-    const filteredTerm = term.toLowerCase();
-    console.log(filteredTerm);
-    console.log("current search term:", filteredTerm);
-    setSearchTerm(filteredTerm);
-    searchPokemon(filteredTerm);
+    console.log("current search term:", term);
+    setSearchTerm(term);
+    searchPokemon(term.toLowerCase());
   }
 
   return (
@@ -98,12 +97,11 @@ export default function SearchBar() {
         flexDirection: "column",
       }}
     >
-      <div>
-        <button onClick={receiveSpeech}>speak</button>
-
-        <h5 className="content"></h5>
-      </div>
-
+      <MicIcon
+        onClick={receiveSpeech}
+        fontSize="large"
+        style={{ cursor: "pointer", margin: "50px 0" }}
+      />
       <div className={classes.search}>
         <div className={classes.searchIcon}>
           <SearchIcon />

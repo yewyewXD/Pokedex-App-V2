@@ -66,13 +66,7 @@ export default function App() {
       <Navbar />
 
       <Grid container style={{ marginTop: "64px", padding: "36px 48px" }}>
-        <Grid
-          container
-          item
-          justify={"center"}
-          sm={2}
-          style={{ background: "grey" }}
-        >
+        <Grid container item justify={"center"} sm={2}>
           <SearchBar />
           <FilterBar />
         </Grid>
@@ -88,6 +82,7 @@ export default function App() {
             {allPokemon &&
               allPokemon.map((pokemon) => (
                 <OverviewCard
+                  key={pokemon.id}
                   pokemonDetail={pokemon}
                   id={pokemon.id}
                   name={pokemon.name}
