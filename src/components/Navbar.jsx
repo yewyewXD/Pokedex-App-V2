@@ -13,13 +13,16 @@ const NavbarStyles = makeStyles((theme) => ({
     top: 0,
     left: 0,
     right: 0,
+    zIndex: 10000,
   },
   navbar__title: {
     flexGrow: 1,
+    fontSize: "1.5rem",
+    fontWeight: 700,
   },
-  navbar__menuButton: {
-    marginRight: theme.spacing(2),
-  },
+  // navbar__menuButton: {
+  //   marginRight: theme.spacing(2),
+  // },
 }));
 
 export default function Navbar() {
@@ -27,19 +30,17 @@ export default function Navbar() {
 
   return (
     <div className={navbarStyles.navbar}>
-      <AppBar style={{ padding: "0 30px" }}>
-        <Toolbar>
-          <IconButton
+      <AppBar style={{ padding: "0 48px" }}>
+        <Toolbar style={{ padding: 0 }}>
+          {/* <IconButton
             edge="start"
             className={navbarStyles.navbar__menuButton}
             color="inherit"
             aria-label="menu"
           >
             <MenuIcon />
-          </IconButton>
-          <Typography variant="h6" className={navbarStyles.navbar__title}>
-            News
-          </Typography>
+          </IconButton> */}
+          <div className={navbarStyles.navbar__title}>Pokedex V2</div>
           <Button color="inherit">Github</Button>
         </Toolbar>
       </AppBar>

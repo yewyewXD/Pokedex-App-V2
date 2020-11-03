@@ -65,51 +65,31 @@ export default function App() {
     <>
       <Navbar />
 
-      <Grid container style={{ marginTop: "60px" }}>
+      <Grid container style={{ marginTop: "64px", padding: "36px 48px" }}>
         <Grid container item justify={"center"} sm={2}>
           <SearchBar />
           <FilterBar />
         </Grid>
 
-        <Grid
-          container
-          item
-          justify={"center"}
-          alignItems={"center"}
-          sm={10}
-          style={{ padding: "36px 48px" }}
-        >
-          {allPokemon && (
-            <Grid
-              container
-              spacing={3}
-              justify={"center"}
-              alignItems={"center"}
-            >
-              {allPokemon.map((pokemon) => (
-                <Grid
-                  item
-                  container
-                  xl={2}
-                  lg={3}
-                  md={4}
-                  sm={6}
-                  xs={12}
-                  justify={"center"}
-                  align={"center"}
-                  key={pokemon.id}
-                >
-                  <OverviewCard
-                    pokemonDetail={pokemon}
-                    id={pokemon.id}
-                    name={pokemon.name}
-                    types={pokemon.types.map((type) => type.type.name)}
-                    image={pokemon.image}
-                  />
-                </Grid>
+        <Grid container item justify={"center"} alignItems={"center"} sm={10}>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              flexWrap: "wrap",
+            }}
+          >
+            {allPokemon &&
+              allPokemon.map((pokemon) => (
+                <OverviewCard
+                  pokemonDetail={pokemon}
+                  id={pokemon.id}
+                  name={pokemon.name}
+                  types={pokemon.types.map((type) => type.type.name)}
+                  image={pokemon.image}
+                />
               ))}
-            </Grid>
-          )}
+          </div>
         </Grid>
       </Grid>
     </>

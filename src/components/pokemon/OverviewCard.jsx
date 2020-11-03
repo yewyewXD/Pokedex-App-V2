@@ -15,19 +15,21 @@ const cardStyles = makeStyles(
     root: {
       display: "flex",
       alignItems: "center",
-      width: "400px",
+      width: "340px",
       minHeight: "180px",
       padding: "30px 20px",
       borderRadius: "20px 5px",
       boxShadow: "grey 2px 2px 5px",
+      margin: "10px",
     },
     rootLg: {
       display: "flex",
       alignItems: "center",
-      width: "400px",
+      width: "340px",
       minHeight: "180px",
       padding: "30px 20px",
       borderRadius: "20px 5px",
+      margin: "10px",
       transition: "0.2s",
       cursor: "pointer",
       "&:hover": {
@@ -38,13 +40,16 @@ const cardStyles = makeStyles(
     title: {
       fontSize: "1.8rem",
       color: "white",
+      fontWeight: "700",
     },
     label: {
       width: "100px",
-      backgroundColor: "rgba(255, 255, 255, 0.5)",
+      backgroundColor: "rgba(255, 255, 255, 0.3)",
       padding: "3px",
       margin: "5px 0",
       borderRadius: "20px",
+      textAlign: "center",
+      color: "white",
     },
     image: {
       position: "absolute",
