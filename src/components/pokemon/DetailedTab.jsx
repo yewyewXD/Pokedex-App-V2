@@ -31,7 +31,7 @@ const ModalDetailStyles = makeStyles(
       justifyContent: "flex-start",
       alignItems: "center",
       padding: "12px 0",
-      fontWeight: "bold",
+      fontWeight: "600",
     },
     modalDetail__title: {
       marginRight: "10px",
@@ -51,7 +51,7 @@ const ModalDetailStyles = makeStyles(
     modalDetail__boxItem: {
       display: "flex",
       flexDirection: "column",
-      fontWeight: "bold",
+      fontWeight: "600",
       margin: "0 30px",
     },
     modalDetail__boxItem__title: {
