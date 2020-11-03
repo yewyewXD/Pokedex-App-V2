@@ -9,7 +9,10 @@ import MenuIcon from "@material-ui/icons/Menu";
 
 const NavbarStyles = makeStyles((theme) => ({
   navbar: {
-    flexGrow: 1,
+    position: "fixed",
+    top: 0,
+    left: 0,
+    right: 0,
   },
   navbar__title: {
     flexGrow: 1,
@@ -19,12 +22,12 @@ const NavbarStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function ButtonAppBar() {
+export default function Navbar() {
   const navbarStyles = NavbarStyles();
 
   return (
     <div className={navbarStyles.navbar}>
-      <AppBar position="static">
+      <AppBar style={{ padding: "0 30px" }}>
         <Toolbar>
           <IconButton
             edge="start"
