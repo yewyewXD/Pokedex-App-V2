@@ -53,8 +53,6 @@ export default function SearchBar() {
   const classes = useStyles();
 
   function receiveSpeech() {
-    const content = document.querySelector(".content");
-
     const SpeechRecognition =
       window.SpeechRecognition || window.webkitSpeechRecognition;
     const recognition = new SpeechRecognition();
@@ -67,29 +65,29 @@ export default function SearchBar() {
       const current = e.resultIndex;
 
       const transcript = e.results[current][0].transcript;
-      content.textContent = transcript;
-
-      readOutLoud(transcript);
+      handleSearchPokemon(transcript);
+      // readOutLoud(transcript);
     };
 
     recognition.start();
 
-    function readOutLoud(message) {
-      const speech = new SpeechSynthesisUtterance();
-      speech.text = message;
-      speech.volume = 1;
-      speech.rate = 1;
-      speech.pitch = 1;
+    // function readOutLoud(message) {
+    //   const speech = new SpeechSynthesisUtterance();
+    //   speech.text = message;
+    //   speech.volume = 1;
+    //   speech.rate = 1;
+    //   speech.pitch = 1;
 
-      window.speechSynthesis.speak(speech);
-    }
+    //   window.speechSynthesis.speak(speech);
+    // }
   }
 
-  function handleSearchPokemon(e) {
-    const updatedSearchTerm = e.target.value;
-    console.log("current search term:", updatedSearchTerm);
-    setSearchTerm(updatedSearchTerm);
-    searchPokemon(updatedSearchTerm);
+  function handleSearchPokemon(term) {
+    const filteredTerm = term.toLowerCase();
+    console.log(filteredTerm);
+    console.log("current search term:", filteredTerm);
+    setSearchTerm(filteredTerm);
+    searchPokemon(filteredTerm);
   }
 
   return (
@@ -113,7 +111,9 @@ export default function SearchBar() {
         <InputBase
           placeholder="Search…"
           value={searchTerm}
-          onChange={handleSearchPokemon}
+          onChange={(e) => {
+            handleSearchPokemon(e.target.value);
+          }}
           classes={{
             root: classes.inputRoot,
             input: classes.inputInput,
