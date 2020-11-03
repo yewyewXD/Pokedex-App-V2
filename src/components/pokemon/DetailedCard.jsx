@@ -5,6 +5,7 @@ import {
   Backdrop,
   Fade,
 } from "@material-ui/core";
+import cn from "classnames";
 import KeyboardBackspaceIcon from "@material-ui/icons/KeyboardBackspace";
 import DetailedTab from "./DetailedTab";
 
@@ -109,7 +110,7 @@ export default function DetailedCard({
     >
       <Fade in={modalIsOpen}>
         <div
-          className={modalStyles.modal__content}
+          className={cn(modalStyles.modal__content, "no-scrollbar")}
           style={{ background: typeColor }}
         >
           <div className={modalStyles.modal__navbar}>

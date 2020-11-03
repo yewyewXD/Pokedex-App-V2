@@ -40,7 +40,7 @@ const cardStyles = makeStyles(
     title: {
       fontSize: "1.8rem",
       color: "white",
-      fontWeight: "700",
+      fontWeight: "600",
       marginBottom: "5px",
     },
     label: {
