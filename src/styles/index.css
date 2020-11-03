@@ -2,6 +2,12 @@ html,
 body {
   padding: 0;
   margin: 0;
+  font-family: "Montserrat", sans-serif !important;
+  font-weight: 400;
+}
+
+.bold {
+  font-weight: 700;
 }
 
 * {
